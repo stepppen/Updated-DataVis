@@ -1,6 +1,6 @@
-import * as THREE from './build/three.module.js';
-import { OrbitControls } from './js/OrbitControls.js';
-import { RGBELoader } from './js/RGBELoader.js';
+import * as THREE from "/Users/stepan.vedunov/Documents/ZHdK/BA/Sem3/Data Visualisation/Main Project/Updated-DataVis/build/three.module";
+import { OrbitControls } from "/Users/stepan.vedunov/Documents/ZHdK/BA/Sem3/Data Visualisation/Main Project/Updated-DataVis/js/OrbitControls";
+import { RGBELoader } from "/Users/stepan.vedunov/Documents/ZHdK/BA/Sem3/Data Visualisation/Main Project/Updated-DataVis/js/RGBELoader";
 
 let scene, camera, renderer, controls, pointlight;
 
