@@ -1,7 +1,7 @@
 import {
     ContMargPosition, SavannaPosition, ForestPosition, GrasslandPosition, DesertPosition, WetlandPosition,
     ShrublandPosition, BCEPosition, OpenOceanPosition
-} from './BiomeSelection.js';
+} from "/Users/stepan.vedunov/Documents/ZHdK/BA/Sem3/Data Visualisation/Main Project/Updated-DataVis/BiomeSelection";
 
 let output = document.getElementById("confirmation");
 
