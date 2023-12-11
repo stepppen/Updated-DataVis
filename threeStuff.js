@@ -1,6 +1,6 @@
-import * as THREE from "./build/three.module";
-import { OrbitControls } from "./js/OrbitControls";
-import { RGBELoader } from "./js/RGBELoader";
+import * as THREE from "/build/three.module";
+import { OrbitControls } from "/js/OrbitControls";
+import { RGBELoader } from "/js/RGBELoader";
 
 let scene, camera, renderer, controls, pointlight;
 
