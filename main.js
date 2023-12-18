@@ -1,7 +1,7 @@
 import {
     ContMargPosition, SavannaPosition, ForestPosition, GrasslandPosition, DesertPosition, WetlandPosition,
     ShrublandPosition, BCEPosition, OpenOceanPosition
-} from "./BiomeSelection";
+} from "./BiomeSelection.js";
 
 let output = document.getElementById("confirmation");
 
@@ -15,7 +15,7 @@ const wheelSize = 120;
 
 
 
-function updateColorWheel(tokenData) {
+function updateWheel(tokenData) {
     const centerX_VAL = 0;
     const centerY_VAL = 0;
 
@@ -45,36 +45,31 @@ function addColorWheel(tokenData) {
     squareMeterText.classList.add("is-visible");
 }
 
-function udpateBackground(tokenData) {
-    let color;
+function updateUnit(tokenData) {
 
     if (45 <= tokenData.rotation && tokenData.rotation < 135) {
         km2_unit.classList.remove("is-visible");
         m2_unit.classList.remove("is-visible");
         ha_unit.classList.remove("is-visible");
         output.innerHTML = 'a';
-        color = "yellow";
         a_unit.classList.add("is-visible");
     } else if (135 <= tokenData.rotation && tokenData.rotation < 225) {
         km2_unit.classList.remove("is-visible");
         ha_unit.classList.remove("is-visible");
         a_unit.classList.remove("is-visible");
         output.innerHTML = 'm2';
-        color = "blue";
         m2_unit.classList.add("is-visible");
     } else if (225 <= tokenData.rotation && tokenData.rotation < 315) {
         ha_unit.classList.remove("is-visible");
         m2_unit.classList.remove("is-visible");
         a_unit.classList.remove("is-visible");
         output.innerHTML = 'km2';
-        color = "red";
         km2_unit.classList.add("is-visible");
     } else {
         km2_unit.classList.remove("is-visible");
         m2_unit.classList.remove("is-visible");
         a_unit.classList.remove("is-visible");
         output.innerHTML = 'ha';
-        color = "green";
         ha_unit.classList.add("is-visible");
     }
 
@@ -94,6 +89,8 @@ function addBiomeToMain(tokenData) {
     let tokenX = tokenData.x;
     let tokenY = tokenData.y;
     console.log(ContMarg);
+
+    //provisional code to detect the biome whenever the token is within certain region
 
     if (tokenX >= ContMarg[0] && tokenX <= ContMarg[1] - wheelSize / 2 && tokenY >= ContMarg[2] - wheelSize / 2 && tokenY <= ContMarg[3]) {
         console.log('token is inside Continent Margins');
@@ -144,9 +141,9 @@ function listenToTokens() {
         if (json?.type === "/tracker/add") {
             addColorWheel(data);
         } else if (json?.type === "/tracker/update") {
-            updateColorWheel(data);
+            updateWheel(data);
             addBiomeToMain(data);
-            udpateBackground(data);
+            updateUnit(data);
         }
     };
 }

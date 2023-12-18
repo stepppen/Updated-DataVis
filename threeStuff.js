@@ -1,6 +1,6 @@
-import * as THREE from "/build/three.module";
-import { OrbitControls } from "/js/OrbitControls";
-import { RGBELoader } from "/js/RGBELoader";
+import * as THREE from "./build/three.module.js";
+import { OrbitControls } from "./js/OrbitControls.js";
+import { RGBELoader } from "./js/RGBELoader.js";
 
 let scene, camera, renderer, controls, pointlight;
 
@@ -19,8 +19,6 @@ function init() {
     camera.position.set(0, 0, 500);
     controls = new OrbitControls(camera, renderer.domElement);
 
-    // controls.autoRotate = true;
-    // controls.autoRotateSpeed = 0.5;
     controls.enableDamping = true;
     controls.dampingFactor = 0.03;
     controls.minPolarAngle = 1.1;
@@ -35,44 +33,12 @@ function init() {
     pointlight.position.set(200, 200, 200);
     scene.add(pointlight);
 
-
-    // const planeMesh = new THREE.Mesh(
-    //     new THREE.PlaneGeometry(150, 150),
-    //     new THREE.MeshBasicMaterial({
-    //         side: THREE.DoubleSide,
-    //         transparent: true,
-    //         opacity: 0.5,
-    //         visible: true
-    //     })
-    // );
-    // planeMesh.material.color.setColorName("green");
-    // // planeMesh.material.opacity(0.5);
-    // planeMesh.rotateX(-Math.PI / 2);
-    // planeMesh.rotateZ(Math.PI / 4);
-    // planeMesh.position.y = window.innerHeight / 2 - 525;
-    // // planeMesh.rotation.y(Math.PI / 4);
-    // scene.add(planeMesh);
-
-
     const grid = new THREE.GridHelper(150, 1);
     grid.position.y = -40;
     grid.rotation.y = Math.PI / 4;
     scene.add(grid);
 
-    // const highlightMesh = new THREE.Mesh(
-    //     new THREE.PlaneGeometry(1, 1),
-    //     new THREE.MeshBasicMaterial({
-    //         side: THREE.DoubleSide,
-    //         transparent: true
-    //     })
-    // );
-    // scene.add(highlightMesh);
-
-
     let envmaploader = new THREE.PMREMGenerator(renderer);
-
-
-
     new RGBELoader().setPath('textures/').load('lilienstein_4k.hdr', function (hdrmap) {
 
         let envmap = envmaploader.fromCubemap(hdrmap);
